@@ -20,6 +20,7 @@ namespace API.Controllers
             _repository = repository;
         }
 
+        [HttpPost]
         public IActionResult Cadastrar(CadastrarVendedorDTO dto)
         {
             var vendedor = new Vendedor(dto);
