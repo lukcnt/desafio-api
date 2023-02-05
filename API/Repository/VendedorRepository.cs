@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using API.Context;
+using API.DTO;
 using API.Models;
 
 namespace API.Repository
@@ -26,6 +27,15 @@ namespace API.Repository
         {
             var vendedor = _context.Vendedores.Find(id);
             return vendedor;
+        }
+
+        public List<ObterVendedorDTO> ObterPorNome(string nome)
+        {
+            var vendedores = _context.Vendedores.Where(x => x.Nome.Contains(nome))
+                                                .Select(x => new ObterVendedorDTO(x))
+                                                .ToList();
+            
+            return vendedores;
         }
     }
 }
