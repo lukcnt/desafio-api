@@ -37,5 +37,13 @@ namespace API.Repository
             
             return vendedores;
         }
+
+        public Vendedor AtualizarVendedor(Vendedor vendedor)
+        {
+            _context.Vendedores.Update(vendedor);
+            _context.SaveChanges();
+
+            return vendedor;
+        }
     }
 }
