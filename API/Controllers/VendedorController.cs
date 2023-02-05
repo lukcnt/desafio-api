@@ -50,5 +50,22 @@ namespace API.Controllers
             var vendedores = _repository.ObterPorNome(nome);
             return Ok(vendedores);
         }
+
+        [HttpPut("{id}")]
+        public IActionResult Atualizar(int id, AtualizarVendedorDTO dto)
+        {
+            var vendedor = _repository.ObterPorId(id);
+
+            if (vendedor is not null)
+            {
+                vendedor.MapearAtualizarVendedorDTO(dto);
+                _repository.AtualizarVendedor(vendedor);
+                return Ok(vendedor);
+            }
+            else
+            {
+                return NotFound( new { Mensagem = "Vendedor não encontrado"});
+            }
+        }
     }
 }
