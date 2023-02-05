@@ -35,7 +35,8 @@ namespace API.Controllers
 
             if (vendedor is not null)
             {
-                return Ok(vendedor);
+                var vendedorDTO = new ObterVendedorDTO(vendedor);
+                return Ok(vendedorDTO);
             }
             else
             {
