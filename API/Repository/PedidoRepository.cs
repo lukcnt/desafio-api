@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using API.Context;
 using API.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace API.Repository
 {
@@ -26,7 +27,10 @@ namespace API.Repository
 
         public Pedido ObterPorId(int id)
         {
-            var pedido = _context.Pedidos.Find(id);
+            var pedido = _context.Pedidos.Include(x => x.Vendedor)
+                                         .Include(x => x.Cliente)
+                                         .FirstOrDefault(x => x.Id == id);
+                                         
             return pedido;
         }
     }
