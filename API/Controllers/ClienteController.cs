@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using API.DTO;
+using API.Models;
 using API.Repository;
 using Microsoft.AspNetCore.Mvc;
 
@@ -16,6 +18,14 @@ namespace API.Controllers
         public ClienteController(ClienteRepository repository)
         {
             _repository = repository;
+        }
+
+        [HttpPost]
+        public IActionResult Cadastrar(CadastrarClienteDTO dto)
+        {
+            var cliente = new Cliente(dto);
+            _repository.Cadastrar(cliente);
+            return Ok(cliente);
         }
     }
 }
