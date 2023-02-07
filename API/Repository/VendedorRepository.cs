@@ -57,5 +57,13 @@ namespace API.Repository
             vendedor.Senha = dto.Senha;
             AtualizarVendedor(vendedor);
         }
+
+        public List<ListarVendedoresDTO> ListarVendedores()
+        {
+            var vendedores = _context.Vendedores.Select(x => new ListarVendedoresDTO(x))
+                                                .ToList();
+
+            return vendedores;
+        }
     }
 }
