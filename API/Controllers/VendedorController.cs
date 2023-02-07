@@ -106,5 +106,20 @@ namespace API.Controllers
             var vendedores = _repository.ListarVendedores();
             return Ok(vendedores);
         }
+
+        [HttpPost("EfetuarLogin")]
+        public IActionResult EfetuarLogin(LoginVendedorDTO dto)
+        {
+            bool autorizarLogin = _repository.EfetuarLogin(dto);
+
+            if (autorizarLogin)
+            {
+                return Ok( new { Mensagem = "Login autorizado"});
+            }
+            else
+            {
+                return NotFound( new { Mensagem = "Login ou senha não encontrados" });
+            }
+        }
     }
 }
