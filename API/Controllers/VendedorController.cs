@@ -99,5 +99,12 @@ namespace API.Controllers
                 return NotFound( new { Mensagem = "Vendedor não encontrado"});
             }
         }
+
+        [HttpGet("ListarVendedores")]
+        public IActionResult ListarVendedores()
+        {
+            var vendedores = _repository.ListarVendedores();
+            return Ok(vendedores);
+        }
     }
 }
