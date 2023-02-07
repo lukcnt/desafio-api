@@ -65,5 +65,19 @@ namespace API.Repository
 
             return vendedores;
         }
+
+        public bool EfetuarLogin(LoginVendedorDTO dto)
+        {
+            var login = false;
+
+            foreach(var vendedor in _context.Vendedores)
+            {
+                if(vendedor.Login == dto.Login && vendedor.Senha == dto.Senha)
+                {
+                    login = true;
+                }
+            }
+            return login;
+        }
     }
 }
