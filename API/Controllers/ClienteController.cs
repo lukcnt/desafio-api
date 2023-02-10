@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using API.DTO;
-using API.DTO.Cliente;
 using API.Models;
 using API.Repository;
 using Microsoft.AspNetCore.Mvc;
@@ -42,6 +41,13 @@ namespace API.Controllers
             {
                 return NotFound( new { Mensagem = "Login ou senha não encontrados"});
             }
+        }
+
+        [HttpGet("ListarClientes")]
+        public IActionResult ListarClientes()
+        {
+            var clientes = _repository.ListarClientes();
+            return Ok(clientes);
         }
     }
 }
