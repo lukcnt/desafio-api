@@ -50,5 +50,14 @@ namespace API.Repository
             var cliente = _context.Clientes.Find(id);
             return cliente;
         }
+
+        public List<ObterClienteDTO> ObterPorNome(string nome)
+        {
+            var clientes = _context.Clientes.Where(x => x.Nome.Contains(nome))
+                                            .Select(x => new ObterClienteDTO(x))
+                                            .ToList();
+            
+            return clientes;
+        }
     }
 }
