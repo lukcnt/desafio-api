@@ -44,5 +44,11 @@ namespace API.Repository
                                             .ToList();
             return clientes;
         }
+
+        public Cliente ObterPorId(int id)
+        {
+            var cliente = _context.Clientes.Find(id);
+            return cliente;
+        }
     }
 }
