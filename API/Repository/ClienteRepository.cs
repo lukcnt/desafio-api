@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using API.Context;
+using API.DTO.Cliente;
 using API.Models;
 
 namespace API.Repository
@@ -20,6 +21,21 @@ namespace API.Repository
         {
             _context.Clientes.Add(cliente);
             _context.SaveChanges();
+        }
+
+        public bool EfetuarLogin(LoginClienteDTO dto)
+        {
+            var login = false;
+
+            foreach (var cliente in _context.Clientes)
+            {
+                if (cliente.Login == dto.Login && cliente.Senha == dto.Senha)
+                {
+                    login = true;
+                }
+            }
+
+            return login;
         }
     }
 }
