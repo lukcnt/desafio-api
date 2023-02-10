@@ -65,5 +65,12 @@ namespace API.Controllers
                 return NotFound(new { Mensagem = "Cliente não encontrado!" });
             }
         }
+
+        [HttpGet("ObterPorNome/{nome}")]
+        public IActionResult ObterPorNome(string nome)
+        {
+            var clientes = _repository.ObterPorNome(nome);
+            return Ok(clientes);
+        }
     }
 }
