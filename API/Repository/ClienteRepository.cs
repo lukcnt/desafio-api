@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using API.Context;
-using API.DTO.Cliente;
+using API.DTO;
 using API.Models;
 
 namespace API.Repository
@@ -36,6 +36,13 @@ namespace API.Repository
             }
 
             return login;
+        }
+
+        public List<ListarClientesDTO> ListarClientes()
+        {
+            var clientes = _context.Clientes.Select(x => new ListarClientesDTO(x))
+                                            .ToList();
+            return clientes;
         }
     }
 }
