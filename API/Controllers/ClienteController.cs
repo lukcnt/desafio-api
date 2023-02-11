@@ -105,5 +105,21 @@ namespace API.Controllers
                 return NotFound( new { Mensagem = "Cliente não encontrado" });
             }
         }
+
+        [HttpPatch("{id}")]
+        public IActionResult AtualizarSenha(int id, AtualizarSenhaClienteDTO dto)
+        {
+            var cliente = _repository.ObterPorId(id);
+
+            if (cliente is not null)
+            {
+                _repository.AtualizarSenha(cliente, dto);
+                return Ok(cliente);
+            }
+            else
+            {
+                return NotFound( new { Mensagem = "Cliente não encontrado" } );
+            }
+        }
     }
 }
