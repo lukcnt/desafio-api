@@ -67,5 +67,11 @@ namespace API.Repository
 
             return cliente;
         }
+
+        public void DeletarCliente(Cliente cliente)
+        {
+            _context.Clientes.Remove(cliente);
+            _context.SaveChanges();
+        }
     }
 }
