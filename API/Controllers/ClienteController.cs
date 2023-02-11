@@ -89,5 +89,21 @@ namespace API.Controllers
                 return NotFound( new { Mensagem = "Cliente não encontrado"});
             }
         }
+
+        [HttpDelete("{id}")]
+        public IActionResult Deletar(int id)
+        {
+            var cliente = _repository.ObterPorId(id);
+
+            if (cliente is not null)
+            {
+                _repository.DeletarCliente(cliente);
+                return NoContent();
+            }
+            else
+            {
+                return NotFound( new { Mensagem = "Cliente não encontrado" });
+            }
+        }
     }
 }
