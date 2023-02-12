@@ -36,5 +36,14 @@ namespace API.Repository
             var servico = _context.Servicos.Find(id);
             return servico;
         }
+
+        public List<ObterServicoDTO> ObterPorNome(string nome)
+        {
+            var servicos = _context.Servicos.Where(x => x.Nome.Contains(nome))
+                                            .Select(x => new ObterServicoDTO(x))
+                                            .ToList();
+            
+            return servicos;
+        }
     }
 }
