@@ -27,5 +27,12 @@ namespace API.Controllers
             _repository.Cadastrar(servico);
             return Ok(servico);
         }
+
+        [HttpGet("ListarServicos")]
+        public IActionResult ListarServicos()
+        {
+            var servicos = _repository.ListarServicos();
+            return Ok(servicos);
+        }
     }
 }
