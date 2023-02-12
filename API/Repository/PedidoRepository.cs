@@ -25,6 +25,15 @@ namespace API.Repository
             return pedido;
         }
 
+        public List<Pedido> ListarPedidos()
+        {
+            var pedidos = _context.Pedidos.Include(x => x.Vendedor)
+                                          .Include(x => x.Cliente)
+                                          .ToList();
+
+            return pedidos;
+        }
+
         public Pedido ObterPorId(int id)
         {
             var pedido = _context.Pedidos.Include(x => x.Vendedor)
