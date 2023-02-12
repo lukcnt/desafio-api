@@ -64,5 +64,12 @@ namespace API.Controllers
                 return NotFound( new { Mensagem = "Esse vendedor não possui pedidos!" } );
             }
         }
+
+        [HttpGet("ListarPedidoPorCliente/{id}")]
+        public IActionResult ListarPedidoPorCliente(int id)
+        {
+            var pedidos = _repository.ListarPedidoPorCliente(id);
+            return Ok(pedidos);
+        }
     }
 }
