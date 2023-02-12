@@ -32,7 +32,7 @@ namespace API.Controllers
         public IActionResult ObterPorId(int id)
         {
             var pedido = _repository.ObterPorId(id);
-
+            
             if (pedido is not null)
             {
                 return Ok(pedido);
