@@ -43,5 +43,15 @@ namespace API.Repository
                                          
             return pedido;
         }
+
+        public List<Pedido> ListarPedidoPorVendedor(int id)
+        {
+            var pedidos = _context.Pedidos.Where(x => x.VendedorId.Equals(id))
+                                          .Include(x => x.Vendedor)
+                                          .Include(x => x.Cliente)
+                                          .ToList();
+            
+            return pedidos;
+        }
     }
 }
