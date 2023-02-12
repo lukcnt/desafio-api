@@ -34,5 +34,21 @@ namespace API.Controllers
             var servicos = _repository.ListarServicos();
             return Ok(servicos);
         }
+
+        [HttpGet("{id}")]
+        public IActionResult ObterPorId(int id)
+        {
+            var servico = _repository.ObterPorId(id);
+
+            if (servico is not null)
+            {
+                var servicoDTO = new ObterServicoDTO(servico);
+                return Ok(servicoDTO);
+            }
+            else
+            {
+                return NotFound( new { Mensagem = "Serviço não encontrado!" } );
+            }
+        }
     }
 }
