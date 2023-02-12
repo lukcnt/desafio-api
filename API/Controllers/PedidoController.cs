@@ -49,5 +49,20 @@ namespace API.Controllers
             var pedidos = _repository.ListarPedidos();
             return Ok(pedidos);
         }
+
+        [HttpGet("ListarPedidoPorVendedor/{id}")]
+        public IActionResult ListarPedidoPorVendedor(int id)
+        {
+            var pedidos = _repository.ListarPedidoPorVendedor(id);
+
+            if (pedidos is not null)
+            {
+                return Ok(pedidos);
+            }
+            else
+            {
+                return NotFound( new { Mensagem = "Esse vendedor não possui pedidos!" } );
+            }
+        }
     }
 }
