@@ -74,5 +74,21 @@ namespace API.Controllers
                 return NotFound( new { Mensagem = "Serviço não encontrado!" } );
             }
         }
+
+        [HttpPatch("{id}")]
+        public IActionResult AtualizarDescricao(int id, AtualizarDescricaoServicoDTO dto)
+        {
+            var servico = _repository.ObterPorId(id);
+
+            if (servico is not null)
+            {
+                _repository.AtualizarDescricao(servico, dto);
+                return Ok(servico);
+            }
+            else
+            {
+                return NotFound( new { Mensagem = "Serviço não encontrado!" } );
+            }
+        }
     }
 }
