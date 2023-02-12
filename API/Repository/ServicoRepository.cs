@@ -53,5 +53,11 @@ namespace API.Repository
 
             return servico;
         }
+
+        public void AtualizarDescricao(Servico servico, AtualizarDescricaoServicoDTO dto)
+        {
+            servico.Descricao = dto.Descricao;
+            AtualizarServico(servico);
+        }
     }
 }
