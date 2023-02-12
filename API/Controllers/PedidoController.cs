@@ -42,5 +42,12 @@ namespace API.Controllers
                 return NotFound(new { Mensagem = "Pedido não encontrado" });
             }
         }
+
+        [HttpGet("ListarPedidos")]
+        public IActionResult ListarPedidos()
+        {
+            var pedidos = _repository.ListarPedidos();
+            return Ok(pedidos);
+        }
     }
 }
