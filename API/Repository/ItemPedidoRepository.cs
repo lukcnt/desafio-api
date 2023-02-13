@@ -48,5 +48,11 @@ namespace API.Repository
 
             return item;
         }
+
+        public void DeletarItem(ItemPedido item)
+        {
+            _context.ItensPedido.Remove(item);
+            _context.SaveChanges();
+        }
     }
 }
