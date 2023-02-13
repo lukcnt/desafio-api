@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using API.Context;
 using API.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace API.Repository
 {
@@ -22,6 +23,16 @@ namespace API.Repository
             _context.SaveChanges();
 
             return item;
+        }
+
+        public List<ItemPedido> ListarPorPedido(int id)
+        {
+            var itens = _context.ItensPedido.Where(x => x.PedidoId.Equals(id))
+                                            .Include(x => x.Pedido)
+                                            .Include(x => x.Servico)
+                                            .ToList();
+            
+            return itens;
         }
     }
 }
