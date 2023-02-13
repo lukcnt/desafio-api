@@ -34,5 +34,19 @@ namespace API.Repository
             
             return itens;
         }
+
+        public ItemPedido ObterPorId(int id)
+        {
+            var item = _context.ItensPedido.Find(id);
+            return item;
+        }
+
+        public ItemPedido AtualizarPedido(ItemPedido item)
+        {
+            _context.ItensPedido.Update(item);
+            _context.SaveChanges();
+
+            return item;
+        }
     }
 }
