@@ -59,5 +59,21 @@ namespace API.Controllers
                 return NotFound(new{Mensagem="Itens não encontrados!"});
             }
         }
+
+        [HttpDelete("{id}")]
+        public IActionResult Deletar(int id)
+        {
+            var item = _repository.ObterPorId(id);
+            
+            if (item is not null)
+            {
+                _repository.DeletarItem(item);
+                return Ok(new{Mensagem="Item deletado com sucesso!"});
+            }
+            else
+            {
+                return NotFound(new{Mensagem="Item não encontrado!"});
+            }
+        }
     }
 }
