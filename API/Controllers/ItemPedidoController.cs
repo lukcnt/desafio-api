@@ -42,5 +42,22 @@ namespace API.Controllers
                 return NotFound(new{Mensagem="Não há nenhum item neste pedido!"});
             }
         }
+
+        [HttpPut("{id}")]
+        public IActionResult Atualizar(int id, AtualizarItemPedidoDTO dto)
+        {
+            var item = _repository.ObterPorId(id);
+
+            if (item is not null)
+            {
+                item.MapearAtualizarItemPedidoDTO(dto);
+                _repository.AtualizarPedido(item);
+                return Ok(item);
+            }
+            else
+            {
+                return NotFound(new{Mensagem="Itens não encontrados!"});
+            }
+        }
     }
 }
