@@ -27,5 +27,20 @@ namespace API.Controllers
             _repository.Cadastrar(item);
             return Ok(item);
         }
+
+        [HttpGet("{id}")]
+        public IActionResult ListarPorPedido(int id)
+        {
+            var itens = _repository.ListarPorPedido(id);
+
+            if (itens is not null)
+            {
+                return Ok(itens);
+            }
+            else
+            {
+                return NotFound(new{Mensagem="Não há nenhum item neste pedido!"});
+            }
+        }
     }
 }
