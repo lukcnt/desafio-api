@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using API.Context;
+using API.Models;
 
 namespace API.Repository
 {
@@ -13,6 +14,14 @@ namespace API.Repository
         public ItemPedidoRepository(VendasContext context)
         {
             _context = context;
+        }
+
+        public ItemPedido Cadastrar(ItemPedido item)
+        {
+            _context.ItensPedido.Add(item);
+            _context.SaveChanges();
+
+            return item;
         }
     }
 }
