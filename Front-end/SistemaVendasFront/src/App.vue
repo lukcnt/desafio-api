@@ -12,7 +12,6 @@
     <div class="dropdown-content">
       <router-link to="/vendedor/listar">Listar</router-link>
       <router-link to="/vendedor/cadastrar">Cadastrar</router-link>
-      <a href="#">Link 3</a>
     </div>
   </div>
   <div class="dropdown">
@@ -20,9 +19,8 @@
       <i class="fa fa-caret-down"></i>
     </button>
     <div class="dropdown-content">
-      <a href="#">Link 1</a>
-      <a href="#">Link 2</a>
-      <a href="#">Link 3</a>
+      <router-link to="/cliente/cadastrar">Cadastrar</router-link>
+      <router-link to="/cliente/listar">Listar</router-link>
     </div>
   </div>
   <div class="dropdown">
@@ -30,9 +28,8 @@
       <i class="fa fa-caret-down"></i>
     </button>
     <div class="dropdown-content">
-      <a href="#">Link 1</a>
-      <a href="#">Link 2</a>
-      <a href="#">Link 3</a>
+      <router-link to="/servico/cadastrar">Cadastrar</router-link>
+      <router-link to="/servico/listar">Listar</router-link>
     </div>
   </div> 
   <div class="dropdown">
@@ -40,9 +37,8 @@
       <i class="fa fa-caret-down"></i>
     </button>
     <div class="dropdown-content">
-      <a href="#">Link 1</a>
-      <a href="#">Link 2</a>
-      <a href="#">Link 3</a>
+      <router-link to="/pedido/cadastrar">Cadastrar</router-link>
+      <router-link to="/pedido/listar">Listar</router-link>
     </div>
   </div>
   <div class="dropdown">
@@ -50,9 +46,8 @@
       <i class="fa fa-caret-down"></i>
     </button>
     <div class="dropdown-content">
-      <a href="#">Link 1</a>
-      <a href="#">Link 2</a>
-      <a href="#">Link 3</a>
+      <router-link to="/itemPedido/cadastrar">Cadastrar</router-link>
+      <router-link to="/itemPedido/listar">Listar</router-link>
     </div>
   </div> 
 </div>

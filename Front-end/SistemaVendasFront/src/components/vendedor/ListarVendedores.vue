@@ -17,8 +17,8 @@
                 <td>{{ vendedor.nome }}</td>
                 <td>{{ vendedor.login }}</td>
                 <td>
-                    <button class="btn btn-success">Editar</button>
-                    <button class="btn btn-danger">Excluir</button>
+                    <button class="btn btn-success" @click="editarVendedor(vendedor.id)">Editar</button>
+                    <button class="btn btn-danger" @click="excluirVendedor(vendedor)">Excluir</button>
                 </td>
             </tr>
         </tbody>
@@ -26,24 +26,32 @@
     </div>
 </template>
 <script>
-import VendedorDataService from '../../services/VendedorDataService';
-
-export default {
-    data() {
-        return {
-            vendedores: []
-        }
+  import VendedorDataService from '../../services/VendedorDataService';
+  export default {
+    data(){
+      return{
+        vendedores: []
+      }
     },
-    methods: {
-        obterVendedores() {
-            VendedorDataService.listar()
-                .then(response => {
-                    this.vendedores = response.data;
-                });
+    methods:{
+      obterVendedores() {
+        VendedorDataService.listar()
+          .then(response => {
+            this.vendedores = response.data;
+          });
+      },
+      editarVendedor(id) {
+        this.$router.push('/vendedor/' + id);
+      },
+      async excluirVendedor(vendedor) {
+        if (confirm(`Tem certeza que deseja excluir o vendedor ${vendedor.nome}?`)) {
+            await VendedorDataService.deletar(vendedor.id);
+            this.obterVendedores();
         }
+      }
     },
     mounted() {
-        this.obterVendedores();
+      this.obterVendedores();
     }
-}
+  }
 </script>
