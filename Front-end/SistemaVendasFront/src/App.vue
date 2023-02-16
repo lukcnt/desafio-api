@@ -11,7 +11,7 @@
     </button>
     <div class="dropdown-content">
       <router-link to="/vendedor/listar">Listar</router-link>
-      <a href="#">Link 2</a>
+      <router-link to="/vendedor/cadastrar">Cadastrar</router-link>
       <a href="#">Link 3</a>
     </div>
   </div>

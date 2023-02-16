@@ -7,6 +7,10 @@ const routes = [
     {
         path: "/vendedor/listar",
         component: () => import("./components/vendedor/ListarVendedores.vue")
+    },
+    {
+        path: "/vendedor/cadastrar",
+        component: () => import("./components/vendedor/Cadastrar.vue")
     }
 ];
 const router = createRouter({
