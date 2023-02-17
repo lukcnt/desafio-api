@@ -1,7 +1,7 @@
 <template>
     <h3>Atualizar Pedidos</h3>
     <hr/>
-    <div class="form" style="padding: 1;">
+    <div class="form" style="padding: 1%;">
         <div class="col-8">
             <div>
                 <label class="form-label">Id</label>

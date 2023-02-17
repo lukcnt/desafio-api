@@ -25,13 +25,12 @@
     </div>
   </template>
   
-  <script>
+<script>
 import PedidoDataService from '../../services/PedidoDataService'
 import ClienteDataService from '../../services/ClienteDataService'
 import VendedorDataService from '../../services/VendedorDataService'
 
 export default {
-      name: "FormCadastroPedido",
       data(){
           return{
               dateToView: new Date(),

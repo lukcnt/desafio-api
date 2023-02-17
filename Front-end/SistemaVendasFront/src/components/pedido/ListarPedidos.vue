@@ -35,7 +35,7 @@
   export default {
     data() {
       return {
-        pedidos: [],
+        pedido: [],
         itensPedidos: []
       }
     },

@@ -2,7 +2,7 @@ import http from "../http-common";
 
 class ItemPedidoDataService {
     listar() {
-        return http.get('/ItemPedido/ListarItensPedido');
+        return http.get('/ItemPedido/Listar');
     }
     cadastrar(itemPedido){
         return http.post('/ItemPedido',itemPedido);

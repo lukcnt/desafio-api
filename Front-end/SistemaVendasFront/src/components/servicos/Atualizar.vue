@@ -1,8 +1,8 @@
 <template>
     <h3>Alterar Serviço</h3>
     <hr/>
-    <div class="form" style="padding: 1;">
-        <div class="col-8">
+    <div class="form" style="padding: 1%;">
+        <div class="col-3">
             <div>
                 <label class="form-label">Id</label>
                 <input type="text" disabled class="form-control" v-model="servico.id" placeholder="Id">

@@ -2,7 +2,7 @@
     <h3>Novo vendedor</h3>
     <div class="form" style="padding: 1%;">
         <hr/>
-        <div class="col-4">
+        <div class="col-3">
             <div>
                 <label class="form-label">Nome</label>
                 <input type="text" required v-model="vendedor.nome" class="form-control" placeholder="Nome">
@@ -34,16 +34,24 @@ export default {
     },
     methods: {
         cadastrarVendedor() {
-            var data = {
-                nome: this.vendedor.nome,
-                login: this.vendedor.login,
-                senha: this.vendedor.senha
-            };
+            if (this.vendedor.nome === '' || this.vendedor.login === '' || this.vendedor.senha === '')
+            {
+                alert("Todos os campos devem ser preenchidos!")
+            }
+            else
+            {
+                var data = {
+                    nome: this.vendedor.nome,
+                    login: this.vendedor.login,
+                    senha: this.vendedor.senha
+                };
 
-            VendedorDataService.cadastrar(data)
-                .then(() => {
-                    this.$router.push('listar');
+                VendedorDataService.cadastrar(data)
+                    .then(() => {
+                        this.$router.push('listar');
                 });
+            }
+
         }
     }
 }

@@ -1,8 +1,8 @@
 <template>
     <h3>Atualizar Cliente</h3>
     <hr/>
-    <div class="form" style="padding: 1;">
-        <div class="col-8">
+    <div class="form" style="padding: 1%;">
+        <div class="col-4">
             <div>
                 <label class="form-label">Id</label>
                 <input type="text" disabled class="form-control" v-model="cliente.id" placeholder="Id">
