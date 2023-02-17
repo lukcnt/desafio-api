@@ -8,11 +8,15 @@ namespace API.DTO
 {
     public class ListarServicosDTO
     {
+        public int Id { get; set; }
         public string Nome { get; set; }
+        public string Descricao { get; set; }
 
         public ListarServicosDTO(Servico servico)
         {
+            Id = servico.Id;
             Nome = servico.Nome;
+            Descricao = servico.Descricao;
         }
     }
 }
