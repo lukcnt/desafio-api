@@ -75,5 +75,12 @@ namespace API.Controllers
                 return NotFound(new{Mensagem="Item não encontrado!"});
             }
         }
+
+        [HttpGet("Listar")]
+        public IActionResult Listar()
+        {
+            var itensPedido = _repository.Listar();
+            return Ok(itensPedido);
+        }
     }
 }
