@@ -8,7 +8,8 @@
           <th scope="col">Id do Pedido</th>
           <th scope="col">Id do Serviço</th>
           <th scope="col">Quantidade</th>
-          <th scope="col">Valor</th>
+          <th scope="col">Valor Unitário</th>
+          <th scope="col">Valor Total</th>
           <th scope="col">Ações</th>
         </tr>
       </thead>
@@ -19,6 +20,7 @@
           <td>{{ itemPedido.servicoId }}</td>
           <td>{{ itemPedido.quantidade }}</td>
           <td>{{ itemPedido.valor }}</td>
+          <td>{{ itemPedido.valor * itemPedido.quantidade }}</td>
           <td>
             <button class="btn btn-success" @click="atualizarItemPedido(itemPedido.id)">Editar</button>
             <button class="btn btn-danger" @click="excluirItemPedido(itemPedido)">Excluir</button>

@@ -8,17 +8,11 @@
           </div>
           <div>
               <label for="" class="form-label">Vendedor</label>
-              <br>
-              <select name="vendedor" id="vendedor" v-model="cadastro.vendedorId" class="form-select">
-                  <option v-for="(vendedor, index) in Vendedores" :key="index" :value="vendedor.id">{{ vendedor.nome }}</option>
-              </select>
+              <input type="text" required class="form-control" placeholder="Id do Vendedor" v-model="pedido.vendedorId">
           </div>
           <div>
               <label for="" class="form-label">Cliente</label>
-              <br>
-              <select name="cliente" id="cliente" v-model="cadastro.clienteId" class="form-select">
-                  <option v-for="(cliente, index) in Clientes" :key="index" :value="cliente.id">{{ cliente.nome }}</option>
-              </select>
+              <input type="password" required class="form-control" placeholder="Id do Cliente" v-model="pedido.clienteId">
           </div>
           <button class="btn btn-success" style="margin-top: 4%;" @click="cadastrarVendedor">Cadastrar</button>
       </div>
@@ -27,44 +21,44 @@
   
 <script>
 import PedidoDataService from '../../services/PedidoDataService'
-import ClienteDataService from '../../services/ClienteDataService'
-import VendedorDataService from '../../services/VendedorDataService'
 
 export default {
       data(){
           return{
               dateToView: new Date(),
-              cadastro: {
+              pedido: {
                   data: new Date().toISOString(),
-                  clienteId: "",
-                  vendedorId: ""
-              },
-              Vendedores: [],
-              Clientes: []
+                  vendedorId: "",
+                  clienteId: ""
+              }
           }
       },
       methods: {
-          cadastrarVendedor(){
-              PedidoDataService.cadastrar(this.cadastro)
-                  .then(() => {
-                      this.$router.push('listar')
-                  })
-          },
-          toLocaleDate(date){
+        toLocaleDate(date){
               let localeDate = date
               return localeDate.toLocaleString()
-          }
-          
-      },
-      mounted(){
-          VendedorDataService.listar()
-          .then((response) => {
-              this.Vendedores = response.data
-          })
-          ClienteDataService.listar()
-          .then((response) => {
-              this.Clientes = response.data
-          })
+        },
+
+        cadastrarVendedor(){
+            if (this.pedido.clienteId === '' || this.pedido.vendedorId === '')
+            {
+                alert("Todos os campos devem ser preenchido!");
+            }
+            else
+            {
+                var data = {
+                    data: this.pedido.data,
+                    vendedorId: this.pedido.vendedorId,
+                    clienteId: this.pedido.clienteId
+                };
+
+                PedidoDataService.cadastrar(data)
+                  .then(() => {
+                      this.$router.push('listar')
+                  });
+            }
+        }
+
       }
   }
   </script>

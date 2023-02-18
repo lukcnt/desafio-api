@@ -1,7 +1,7 @@
 <template>
     <h3>Alterar Item Pedido</h3>
     <hr/>
-    <div class="form" style="padding: 1;">
+    <div class="form" style="padding: 1%;">
         <div class="col-8">
             <div>
                 <label class="form-label">Id do Item Pedido</label>
@@ -30,28 +30,42 @@
 
 <script>
 import ItemPedidoDataService from '../../services/ItemPedidoDataService';
+
 export default {
     data() {
         return {
-            itemPedido: { }
+            itemPedido: {}
         }
     },
     methods: {
-        atualizarItemPedido() {
-            ItemPedidoDataService.atualizar(this.itemPedido.id,this.itemPedido)
-                .then(() => {
-                    this.$router.push('listar');
-                });
-            },
         obterItemPedido(id) {
             ItemPedidoDataService.obterPorId(id)
                 .then((response) => {
                     this.itemPedido = response.data;
                 });
-            }
         },
+        atualizarItemPedido() {
+            if (this.itemPedido.servicoId === '' || this.itemPedido.quantidade === '' || this.itemPedido.valor === '')
+            {
+                alert("Todos os campos devem ser preenchidos!");
+            }
+            else
+            {
+                var data = {
+                    servicoId: this.itemPedido.servicoId,
+                    quantidade: this.itemPedido.quantidade,
+                    valor: this.itemPedido.valor
+                };
+
+                ItemPedidoDataService.atualizar(this.itemPedido.pedidoId, data)
+                .then(() => {
+                    this.$router.push('listar');
+                });
+            }
+        }
+    },
     mounted() {
-        this.obterItemPedido(this.$route.params.id);
+        this.obterItemPedido(this.$route.params.pedidoId);
     }
 }
 </script>

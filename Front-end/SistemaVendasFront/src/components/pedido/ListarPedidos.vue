@@ -8,17 +8,15 @@
           <th scope="col">Data</th>
           <th scope="col">Id do Vendedor</th>
           <th scope="col">Id do Cliente</th>
-          <th scope="col">Valor Total</th>
           <th scope="col">Ações</th>
         </tr>
       </thead>
       <tbody>
-        <tr v-for="(itemPedido, index) in itensPedidos" :key="index">
-          <td>{{ itemPedido.pedido.id }}</td>
-          <td>{{ itemPedido.pedido.data }}</td>
-          <td>{{ itemPedido.pedido.vendedorId }}</td>
-          <td>{{ itemPedido.pedido.clienteId }}</td>
-          <td>{{ itemPedido.valor * itemPedido.quantidade }}</td>
+        <tr v-for="(pedido, index) in pedidos" :key="index">
+          <td>{{ pedido.id }}</td>
+          <td>{{ pedido.data }}</td>
+          <td>{{ pedido.vendedorId }}</td>
+          <td>{{ pedido.clienteId }}</td>
           <td>
             <button class="btn btn-success" @click="atualizarPedido(pedido.id)">Editar</button>
             <button class="btn btn-danger" @click="excluirPedido(pedido)">Excluir</button>
@@ -30,13 +28,11 @@
   
   <script>
   import PedidoDataService from '../../services/PedidoDataService';
-  import ItemPedidoDataService from '../../services/ItemPedidoDataService';
   
   export default {
     data() {
       return {
-        pedido: [],
-        itensPedidos: []
+        pedidos: [],
       }
     },
     methods: {
@@ -54,18 +50,10 @@
           await PedidoDataService.deletar(pedido.id);
           this.obterPedido();
         }
-      },
-      obterItensPedidos() {
-        ItemPedidoDataService.listar()
-          .then(response => {
-                this.itensPedidos = response.data;
-                this.somaTotal();
-              });
-      },
+      }
     },
     mounted() {
       this.obterPedido();
-      this.obterItensPedidos();
     },
   }
   </script>

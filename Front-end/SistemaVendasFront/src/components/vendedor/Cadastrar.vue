@@ -36,7 +36,7 @@ export default {
         cadastrarVendedor() {
             if (this.vendedor.nome === '' || this.vendedor.login === '' || this.vendedor.senha === '')
             {
-                alert("Todos os campos devem ser preenchidos!")
+                alert("Todos os campos devem ser preenchidos!");
             }
             else
             {

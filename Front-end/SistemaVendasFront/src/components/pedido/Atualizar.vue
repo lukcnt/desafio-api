@@ -9,7 +9,7 @@
             </div>
             <div>
                 <label class="form-label">Data</label>
-                <input type="text" class="form-control" v-model="pedido.data"  placeholder="Data">
+                <input type="text" disabled class="form-control" v-model="pedido.data"  placeholder="Data">
             </div>
             <div>
                 <label class="form-label">Id do Vendedor</label>
@@ -21,7 +21,7 @@
             </div>
             <div>
                 <label class="form-label">Valor Total</label>
-                <input type="text" disabled class="form-control" placeholder="Valor Total">
+                <input type="text" class="form-control" placeholder="Valor Total">
             </div>
             <button type="submit" class="btn btn-success" style="margin-top: 5px; padding 2px" @click="atualizarPedidos">Atualizar</button>
         </div>

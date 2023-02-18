@@ -12,7 +12,7 @@
           </div>
           <div>
               <label for="" class="form-label">Quantidade</label>
-              <input type="text" class="form-control" required placeholder="Quantidade" v-model="cadastro.qnt">
+              <input type="text" class="form-control" required placeholder="Quantidade" v-model="cadastro.quantidade">
           </div>
           <div>
               <label for="" class="form-label">Valor</label>
@@ -27,33 +27,37 @@
 import ItemPedidoDataService from '../../services/ItemPedidoDataService';
 
 export default {
-      name: "CadastroServico",
       data(){
           return{
               cadastro: {
-                  "pedidoId": "",
-                  "servicoId": "",
-                  "qnt": "",
-                  "valor": ""
+                  pedidoId: "",
+                  servicoId: "",
+                  quantidade: "",
+                  valor: ""
               }
           }
       },
       methods: {
         cadastrarItemPedido(){
-              var data = {
+            if (this.cadastro.pedidoId === '' || this.cadastro.servicoId === '' || this.cadastro.quantidade === '' || this.cadastro.valor === '')
+            {
+                alert("Todos os campos devem ser preenchidos!");
+            }
+            else
+            {
+                var data = {
                 pedidoId: this.cadastro.pedidoId,
                 servicoId: this.cadastro.servicoId,
-                quantidade: this.cadastro.qnt,
+                quantidade: this.cadastro.quantidade,
                 valor: this.cadastro.valor,
-                }
+                };
+
                 ItemPedidoDataService.cadastrar(data)
                   .then(() => {
-                      this.$router.push('/itemPedido/listar')
-                  })
-          }
+                      this.$router.push('listar')
+                  });
+            }
+        }
       }
   }
   </script>
-  
-  <style>
-  </style>
